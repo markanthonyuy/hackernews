@@ -88,7 +88,7 @@ const ListBody = styled.div`
 
     > .num {
       width: 50px;
-      padding: 10px 0;
+      padding: 13px 0;
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -110,8 +110,8 @@ const ListBody = styled.div`
 
       > .title {
         margin-bottom: 5px;
-        font-size: 24px;
-        line-height: 26px;
+        font-size: 26px;
+        line-height: 28px;
 
         @media (max-width: 600px) {
           font-size: 18px;
@@ -147,6 +147,17 @@ const ListBody = styled.div`
           line-height: 22px;
           font-size: 14px;
         }
+      }
+
+      > .show-all {
+        width: 110px;
+        margin: 0 0 10px;
+        padding: 5px;
+        display: inline-block;
+        text-align: center;
+        font-size: 13px;
+        cursor: pointer;
+        background: #f0eeff;
       }
 
       > .meta {
@@ -209,6 +220,18 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
     return faux
   }
 
+  const ellipsis = (txt) => {
+    let data = txt.split(' ')
+    if (data.length < 50) return data.join(' ')
+
+    return data.slice(0, 50).join(' ') + ' ...'
+  }
+
+  const showAll = (e, txt) => {
+    e.target.previousSibling.innerHTML = txt
+    e.target.remove()
+  }
+
   return (
     <ListBody>
       {!loading
@@ -225,10 +248,24 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
                   </a>
                 </p>
                 {_.text && (
-                  <div
-                    className="sub-text"
-                    dangerouslySetInnerHTML={{ __html: _.text }}
-                  />
+                  <>
+                    <div
+                      className="sub-text"
+                      dangerouslySetInnerHTML={{
+                        __html: ellipsis(_.text),
+                      }}
+                    />
+                    {_.text.split(' ').length > 50 ? (
+                      <span
+                        onClick={(e) => showAll(e, _.text)}
+                        className="show-all"
+                      >
+                        Show All Text
+                      </span>
+                    ) : (
+                      ''
+                    )}
+                  </>
                 )}
                 <div className="meta">
                   <span>
