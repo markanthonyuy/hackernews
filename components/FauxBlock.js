@@ -34,6 +34,7 @@ const Faux = styled.div`
       height: 25px;
       margin-bottom: 5px;
       background: #ccc5ef;
+      transition: width 0.2s ease-in-out;
 
       @media (max-width: 600px) {
         width: calc(100% - 4px) !important;
