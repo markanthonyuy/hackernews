@@ -14,7 +14,7 @@ export async function getStaticProps() {
   let p1Data
   let allData
   try {
-    const res = await fetch(`${baseUrl}topstories.json`)
+    const res = await fetch(`${baseUrl}showstories.json`)
     allData = await res.json()
 
     const p1 = allData.slice(0, 30)
@@ -89,12 +89,13 @@ export default function Home({ data, allData }) {
   return (
     <div className="container">
       <Head>
-        <title>Hacker News | Top Stories</title>
+        <title>Hacker News | Show</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Title>Hacker News | Top Stories</Title>
-      <Links active="top" />
+      <Title>Hacker News | Show</Title>
+
+      <Links active="show" />
 
       <Paging
         page={page}
@@ -104,7 +105,12 @@ export default function Home({ data, allData }) {
         loading={loading}
       />
 
-      <List currentData={currentData} renderNumber={renderNumber} page={page} />
+      <List
+        currentData={currentData}
+        renderNumber={renderNumber}
+        page={page}
+        noLink={true}
+      />
 
       <Paging
         page={page}
