@@ -45,7 +45,7 @@ export default function Home({ data, allData }) {
   const [currentData, setCurrentData] = useState(data)
   const [page, setPage] = useState(1)
   const [renderNumber, setRenderNumber] = useState(true)
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const getDataPage = async () => {
     try {
