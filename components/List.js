@@ -226,7 +226,7 @@ const List = ({ currentData, renderNumber, page, noLink = false }) => {
                 </p>
                 {_.text && (
                   <div
-                    class="sub-text"
+                    className="sub-text"
                     dangerouslySetInnerHTML={{ __html: _.text }}
                   />
                 )}
