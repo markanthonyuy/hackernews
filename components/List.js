@@ -139,9 +139,9 @@ const ListBody = styled.div`
 
       > .sub-text {
         margin-bottom: 10px;
-
         font-size: 14px;
         line-height: 22px;
+        word-break: break-word;
 
         > p {
           line-height: 22px;
@@ -236,16 +236,22 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
                   </span>
                   <span className="sep">|</span>
                   <span>
-                    <POINTS /> {_.score}
-                  </span>
-                  <span className="sep">|</span>
-                  <span>
-                    <COMMENTS /> {_.descendants}
-                  </span>
-                  <span className="sep">|</span>
-                  <span>
                     <TIME /> <TimeAgo date={_.time * 1000} />
                   </span>
+                  <span className="sep">|</span>
+                  <span>
+                    <POINTS /> {_.score}
+                  </span>
+                  {_.descendants ? (
+                    <>
+                      <span className="sep">|</span>
+                      <span>
+                        <COMMENTS /> {_.descendants}
+                      </span>
+                    </>
+                  ) : (
+                    ''
+                  )}
                 </div>
               </div>
             </div>

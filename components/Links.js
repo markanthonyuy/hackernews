@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const LinksBody = styled.ul`
+  margin: 10px 0;
   padding: 0 10px;
   display: flex;
   list-style: none;
