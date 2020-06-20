@@ -105,7 +105,12 @@ export default function Home({ data, allData }) {
         loading={loading}
       />
 
-      <List currentData={currentData} renderNumber={renderNumber} page={page} />
+      <List
+        currentData={currentData}
+        renderNumber={renderNumber}
+        page={page}
+        loading={loading}
+      />
 
       <Paging
         page={page}

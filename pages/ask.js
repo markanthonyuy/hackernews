@@ -110,6 +110,7 @@ export default function Home({ data, allData }) {
         renderNumber={renderNumber}
         page={page}
         noLink={true}
+        loading={loading}
       />
 
       <Paging

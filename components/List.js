@@ -199,7 +199,7 @@ const ListBody = styled.div`
   }
 `
 
-const List = ({ currentData, renderNumber, page, noLink = false }) => {
+const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
   const generateFauxBlocks = () => {
     let faux = []
     for (let i = 0; i < 12; i++) {
@@ -211,7 +211,7 @@ const List = ({ currentData, renderNumber, page, noLink = false }) => {
 
   return (
     <ListBody>
-      {currentData.length
+      {!loading
         ? currentData.map((_, key) => (
             <div className="list" key={_.id}>
               <span className="num">
