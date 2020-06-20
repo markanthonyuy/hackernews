@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const FooterBody = styled.footer`
   padding: 10px;
-  text-align: center;
+  font-size: 13px;
 
   > p {
     margin-top: 5px;
@@ -12,6 +12,10 @@ const FooterBody = styled.footer`
   > span {
     margin: 0 5px;
     display: inline-block;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 `
 

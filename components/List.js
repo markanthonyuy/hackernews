@@ -109,7 +109,7 @@ const ListBody = styled.div`
       padding: 10px;
 
       > .title {
-        margin-bottom: 5px;
+        margin-bottom: 8px;
         font-size: 26px;
         line-height: 28px;
 
@@ -180,6 +180,7 @@ const ListBody = styled.div`
           @media (max-width: 600px) {
             width: 50%;
             margin: 0;
+            padding: 2px 0;
           }
 
           &:first-child {

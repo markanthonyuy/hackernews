@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 const LinksBody = styled.ul`
   margin: 10px 0;
-  padding: 0 10px;
+  padding: 0 5px;
   display: flex;
   list-style: none;
-  justify-content: center;
+  justify-content: flex-start;
 
   > li {
     > a {

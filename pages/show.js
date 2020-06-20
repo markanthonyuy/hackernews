@@ -37,7 +37,7 @@ export async function getStaticProps() {
 const MAIN_COLOR = '#624ed0'
 const Title = styled.h1`
   padding: 10px 10px 0;
-  text-align: center;
+  text-align: left;
   color: ${MAIN_COLOR};
 `
 
