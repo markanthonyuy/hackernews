@@ -32,6 +32,11 @@ const Links = ({ active }) => (
       </a>
     </li>
     <li>
+      <a href="/best" className={active === 'best' ? 'active' : ''}>
+        Best
+      </a>
+    </li>
+    <li>
       <a href="/new" className={active === 'new' ? 'active' : ''}>
         New
       </a>

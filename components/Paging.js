@@ -4,9 +4,10 @@ const Links = styled.ul`
   padding: 0 10px;
   display: flex;
   list-style: none;
-  justify-content: space-between;
+  justify-content: flex-end;
 
   > li {
+    margin-left: 3px;
     padding: 10px;
     cursor: pointer;
     background: #f0eeff;
