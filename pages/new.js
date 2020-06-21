@@ -8,7 +8,7 @@ import Paging from '../components/Paging'
 import List from '../components/List'
 import Footer from '../components/Footer'
 import Links from '../components/Links'
-const baseUrl = 'https://hacker-news.firebaseio.com/v0/'
+import { baseUrl } from '../utils'
 
 export async function getServerSideProps() {
   let p1Data

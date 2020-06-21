@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import TimeAgo from 'react-timeago'
-import FauxBlock from '../components/FauxBlock'
+import FauxBlock from './FauxBlock'
+import { getUserData } from '../utils'
+import { useState } from 'react'
 
 const AUTHOR = () => (
   <svg
@@ -211,6 +213,17 @@ const ListBody = styled.div`
   }
 `
 
+const Popup = styled.div`
+  position: absolute;
+  top: 30%;
+  left: 0;
+  right: 0;
+  width: 300px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f8f7ff;
+`
+
 const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
   const generateFauxBlocks = () => {
     let faux = []
@@ -234,68 +247,70 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
   }
 
   return (
-    <ListBody>
-      {!loading
-        ? currentData.map((_, key) => (
-            <div className="list" key={_.id}>
-              <span className="num">
-                {renderNumber && key + 1 + (page - 1) * 30}
-              </span>
-              <div className="text">
-                <p className="title">
-                  <a href={_.url} target="_blank" title="Open New Tab">
-                    <span>{_.title}</span>
-                    {!noLink && <NEW_TAB />}
-                  </a>
-                </p>
-                {_.text && (
-                  <>
-                    <div
-                      className="sub-text"
-                      dangerouslySetInnerHTML={{
-                        __html: ellipsis(_.text),
-                      }}
-                    />
-                    {_.text.split(' ').length > 50 ? (
-                      <span
-                        onClick={(e) => showAll(e, _.text)}
-                        className="show-all"
-                      >
-                        Show All Text
-                      </span>
+    <>
+      <ListBody>
+        {!loading
+          ? currentData.map((_, key) => (
+              <div className="list" key={_.id}>
+                <span className="num">
+                  {renderNumber && key + 1 + (page - 1) * 30}
+                </span>
+                <div className="text">
+                  <p className="title">
+                    <a href={_.url} target="_blank" title="Open New Tab">
+                      <span>{_.title}</span>
+                      {!noLink && <NEW_TAB />}
+                    </a>
+                  </p>
+                  {_.text && (
+                    <>
+                      <div
+                        className="sub-text"
+                        dangerouslySetInnerHTML={{
+                          __html: ellipsis(_.text),
+                        }}
+                      />
+                      {_.text.split(' ').length > 50 ? (
+                        <span
+                          onClick={(e) => showAll(e, _.text)}
+                          className="show-all"
+                        >
+                          Show All Text
+                        </span>
+                      ) : (
+                        ''
+                      )}
+                    </>
+                  )}
+                  <div className="meta">
+                    <span title="Author" onClick={() => getUserData(_.by)}>
+                      <AUTHOR /> {_.by}
+                    </span>
+                    <span className="sep">|</span>
+                    <span title="Posted">
+                      <TIME /> <TimeAgo date={_.time * 1000} />
+                    </span>
+                    <span className="sep">|</span>
+                    <span title="Points">
+                      <POINTS /> {_.score}
+                    </span>
+                    {_.descendants ? (
+                      <>
+                        <span className="sep">|</span>
+                        <span title="Comments">
+                          <COMMENTS /> {_.descendants}
+                        </span>
+                      </>
                     ) : (
                       ''
                     )}
-                  </>
-                )}
-                <div className="meta">
-                  <span title="Author">
-                    <AUTHOR /> {_.by}
-                  </span>
-                  <span className="sep">|</span>
-                  <span title="Posted">
-                    <TIME /> <TimeAgo date={_.time * 1000} />
-                  </span>
-                  <span className="sep">|</span>
-                  <span title="Points">
-                    <POINTS /> {_.score}
-                  </span>
-                  {_.descendants ? (
-                    <>
-                      <span className="sep">|</span>
-                      <span title="Comments">
-                        <COMMENTS /> {_.descendants}
-                      </span>
-                    </>
-                  ) : (
-                    ''
-                  )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
-        : generateFauxBlocks().map((el) => el)}
-    </ListBody>
+            ))
+          : generateFauxBlocks().map((el) => el)}
+      </ListBody>
+    </>
   )
 }
 
