@@ -243,7 +243,7 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
               </span>
               <div className="text">
                 <p className="title">
-                  <a href={_.url} target="_blank">
+                  <a href={_.url} target="_blank" title="Open New Tab">
                     <span>{_.title}</span>
                     {!noLink && <NEW_TAB />}
                   </a>
@@ -269,21 +269,21 @@ const List = ({ currentData, renderNumber, page, noLink = false, loading }) => {
                   </>
                 )}
                 <div className="meta">
-                  <span>
+                  <span title="Author">
                     <AUTHOR /> {_.by}
                   </span>
                   <span className="sep">|</span>
-                  <span>
+                  <span title="Posted">
                     <TIME /> <TimeAgo date={_.time * 1000} />
                   </span>
                   <span className="sep">|</span>
-                  <span>
+                  <span title="Points">
                     <POINTS /> {_.score}
                   </span>
                   {_.descendants ? (
                     <>
                       <span className="sep">|</span>
-                      <span>
+                      <span title="Comments">
                         <COMMENTS /> {_.descendants}
                       </span>
                     </>
