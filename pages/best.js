@@ -10,7 +10,7 @@ import Footer from '../components/Footer'
 import Links from '../components/Links'
 const baseUrl = 'https://hacker-news.firebaseio.com/v0/'
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   let p1Data
   let allData
   try {
