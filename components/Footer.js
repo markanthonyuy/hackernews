@@ -21,7 +21,7 @@ const FooterBody = styled.footer`
 
 const Footer = () => (
   <FooterBody>
-    <span>Hacker News by created by</span>
+    <span>Hacker News created by</span>
     <a href="http://markanthonyuy.com" rel="noopener">
       Mark Anthony Uy
     </a>
