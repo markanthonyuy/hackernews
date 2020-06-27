@@ -61,21 +61,27 @@ const ListBody = styled.div`
   background: #fff;
 
   > .list {
-    margin-bottom: 1px;
+    margin-bottom: 3px;
     display: flex;
     background: #fff;
     /* border-radius: 10px; */
     /* box-shadow: 0 3px 5px #ccc; */
     transition: all 0.1s ease-out;
 
+    &:nth-child(even) {
+      background: #f9f9ff;
+    }
+
     &:hover {
-      background: #f8f7ff;
+      background: #ebebff;
 
       > .num {
         background: ${MAIN_COLOR};
       }
 
       > .text {
+        padding: 10px;
+
         > .meta {
           > span {
             color: ${MAIN_COLOR};
